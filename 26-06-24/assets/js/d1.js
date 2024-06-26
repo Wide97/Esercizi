@@ -11,6 +11,13 @@ const btnSubmit = document.getElementById('btnSubmit');
 const formError = document.getElementById('error');
 const formThanks = document.getElementById('thanks');
 
+let formName;
+    let formSurname;
+    let formEmail;
+    let formPassword ;
+    let formAge ;
+    let formPhone;
+
 //Oggetto che contiene dati
 
 const regUser = {
@@ -97,7 +104,7 @@ regAge.addEventListener('blur', function(){
         formError.innerText = 'devi essere maggiorenne';
         return;
     } else if (regAge.value ===''){
-        formError.innerText= 'iil campo e obbligatorio';
+        formError.innerText= 'iil campo e obbligatorio';// metti a posto html perche manca questo
         return;
     } else {
         formError.innerText = '';
@@ -114,3 +121,35 @@ function verify(){
     }
 }
 
+
+btnSubmit.addEventListener('click', function(e){ //la e rappresenta il tipo di evento
+    e.preventDefault(); //messo per gestire il form
+    //vreo variabili per stampare
+   
+});
+
+function compileObject(){
+    formName = regName.value;
+    formSurname = regSurname.value;
+    formEmail = regEmail.value;
+    formPassword = regPassword.value;
+    formAge = regAge.value;
+    formPhone = regPhone.value;
+
+    regUser.name = formName;
+    regUser.surname = formSurname;
+    regUser.email = formEmail;
+    regUser.password = formPassword;
+    regUser.age = formAge;
+    regUser.phone = formPhone;
+
+}
+ function printData(){//stampo il tutto 
+    formThanks.style.display = 'block';
+
+    document.getElementById('formSurname').innerText += regUser.surname;
+    document.getElementById('formSurname').innerText += regUser.surname;
+    document.getElementById('formSurname').innerText += regUser.surname;
+    document.getElementById('formSurname').innerText += regUser.surname;
+    document.getElementById('formSurname').innerText += regUser.surname;
+ }
