@@ -31,10 +31,25 @@
             <label for="regPhone">Telefono</label>
             <input type="tel" id="regPhone" name="regPhone" />
             <br>
-            <button type="submit" id="sendForm">Invia</button>
-            <button type="reset" id="resetForm">Cancella</button>
+            <button type="submit" id="btnSubmit">Invia</button>
+            <button type="reset" id="btnReset">Cancella</button>
         </fieldset>
     </form>
+
+    <div>
+        <h4>N.B. I campi evidenziati sono obbligatori</h4>
+        <h3 id="error"></h3>
+    </div>
+
+    <div id="thanks">
+        <h3>Grazie per esserti registrato, di seguito i dati inseriti</h3>
+        <h4 id="formName">nome: &nbsp;</h4>
+        <h4 id="formSurname">cognome: &nbsp;</h4>
+        <h4 id="formEmail">email: &nbsp;</h4>
+        <h4 id="formPassword">password: &nbsp;</h4>
+        <h4 id="formAge">eta: &nbsp;</h4>
+        <h4 id="formPhone">Telefono: &nbsp;</h4>
+    </div>
 
     <script src="assets/js/d1.js"></script>
 </body>
