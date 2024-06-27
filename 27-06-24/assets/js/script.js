@@ -39,7 +39,7 @@ const createDays = (daysNumber) => {
         dayCellDiv.addEventListener('click', function(){
             unselectAllDays(); //deseleziona il giorno precedentemente selezionato
             dayCellDiv.classList.add('selected');
-            changeMeetingDaySection();
+            changeMeetingDaySection(i);  
             if (appointments[i].lenght > 0) {
                 showAppointments(i);
             } else {
@@ -65,4 +65,29 @@ window.addEventListener('load', init());
 function init(){
     printCurrentMonth();
     createDays(dayInThisMonth());
+}
+
+function unselectAllDays () {
+    const previousSelected = document.querySelector('.selected');
+    if (previousSelected) {
+        previousSelected.classList.remove('selected');
+    }
+}
+function changeMeetingDaySection(dayDate){
+    const newMeetingDay = document.getElementById('newMeetingDay');
+    newMeetingDay.innerText = dayDate + 1;
+    newMeetingDay.classList.add('hasDay');
+}
+
+function showAppointments(dayDate) {
+    const dayAppointments =appointments[dayDate];
+    const appointmentsList= document.querySelector('#appointments ul');
+    appointmentsList.innerHTML = '';
+    dayAppointments.forEach(appointment => {
+        const newLi =document.createElement('li');
+        newLi.innerText = appointment;
+        appointmentsList.appendChild(newLi);
+    });
+    const appointmentsDiv = document.getElementById('appointments');
+    appointmentsDiv.style.display = 'block';
 }

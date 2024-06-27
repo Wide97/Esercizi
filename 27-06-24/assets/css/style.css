@@ -27,7 +27,7 @@ h1 {
     border-radius: 10px;
     cursor: pointer;
 }
-.day:hover {
+.day:hover, .day:hover h3 {
     background-color: #15132e;
 }
 .day h3 {
@@ -54,6 +54,13 @@ h4 {
     display: inline-block;
     vertical-align: bottom;
     margin-right: 3em;
+}
+#newMeetingDay.hasDay {
+    font-size: 28px;
+    font-weight: 700;
+    background-color: #0c0b1d;
+    border-radius: 5px;
+    padding:  0 5px;
 }
 form {
     display: inline;
