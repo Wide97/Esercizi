@@ -25,7 +25,7 @@ const printCurrentMonth = () => {
 }
 
 const dayInThisMonth = () => {
-    const lastDayInTheMonth = new Date(getYear, getMonth +1, 0) //lo 0 e' il giorno del mese perche non esiste lo 0 luglio (anno, mese, giorno)
+    const lastDayInTheMonth = new Date(getYear, getMonth + 1, 0) //lo 0 e' il giorno del mese perche non esiste lo 0 luglio (anno, mese, giorno)
     const numberOfDays = lastDayInTheMonth.getDate();
     return numberOfDays;
 }
@@ -36,10 +36,10 @@ const createDays = (daysNumber) => {
         const dayCellDiv = document.createElement('div');
         dayCellDiv.classList.add('day');
         //celle cliccabili
-        dayCellDiv.addEventListener('click', function(){
+        dayCellDiv.addEventListener('click', function () {
             unselectAllDays(); //deseleziona il giorno precedentemente selezionato
             dayCellDiv.classList.add('selected');
-            changeMeetingDaySection(i);  
+            changeMeetingDaySection(i);
             if (appointments[i].lenght > 0) {
                 showAppointments(i);
             } else {
@@ -54,7 +54,7 @@ const createDays = (daysNumber) => {
         calendarDiv.appendChild(dayCellDiv);
         //popolo l' array dei giorni
         appointments.push([]);
-       
+
 
     }
     console.log(appointments);
@@ -62,32 +62,54 @@ const createDays = (daysNumber) => {
 
 window.addEventListener('load', init());
 
-function init(){
+function init() {
     printCurrentMonth();
     createDays(dayInThisMonth());
 }
 
-function unselectAllDays () {
+function unselectAllDays() {
     const previousSelected = document.querySelector('.selected');
     if (previousSelected) {
         previousSelected.classList.remove('selected');
     }
 }
-function changeMeetingDaySection(dayDate){
+function changeMeetingDaySection(dayDate) {
     const newMeetingDay = document.getElementById('newMeetingDay');
     newMeetingDay.innerText = dayDate + 1;
     newMeetingDay.classList.add('hasDay');
 }
 
 function showAppointments(dayDate) {
-    const dayAppointments =appointments[dayDate];
-    const appointmentsList= document.querySelector('#appointments ul');
+    const dayAppointments = appointments[dayDate];
+    const appointmentsList = document.querySelector('#appointments ul');
     appointmentsList.innerHTML = '';
     dayAppointments.forEach(appointment => {
-        const newLi =document.createElement('li');
+        const newLi = document.createElement('li');
         newLi.innerText = appointment;
         appointmentsList.appendChild(newLi);
     });
     const appointmentsDiv = document.getElementById('appointments');
     appointmentsDiv.style.display = 'block';
+}
+
+const meetingForm = document.querySelector('form');
+meetingForm.addEventListener('submit', handleFormSubmit);
+
+function handleFormSubmit(e) {
+    e.preventDefault();
+    const selectedDay = document.getElementById('newMeetingDay').innerText;
+    const meetingTime = document.getElementById('newMeetingTime').value;
+    const meetingName = document.getElementById('newMeetingName').value;
+    const meetingString = `${meetingTime} - ${meetingName}`;
+    const dayIndex = parseInt(selectedDay) - 1;
+    appointments[dayIndex].push(meetingString);
+    meetingForm.reset();
+    showAppointments(dayIndex);
+    //creo pallino per appuntamenti
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    const selectedCell = document.querySelector('.selected');
+    if (!selectedCell.querySelector('.dot')) {
+        selectedCell.appendChild(dot);
+    }
 }
