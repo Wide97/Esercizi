@@ -64,6 +64,5 @@ window.addEventListener('load', init());
 
 function init(){
     printCurrentMonth();
-    dayInThisMonth(dayInThisMonth());
-
+    createDays(dayInThisMonth());
 }
