@@ -1,0 +1,10 @@
+.required{
+    background-color: aqua;
+}
+input {
+    margin-bottom: 25px;
+}
+#error{
+    background-color: red;
+    color: white;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/stylr.css">
+</head>
+
+<body>
+
+    <h1>Form</h1>
+    <form id="myForm">
+        <fieldset>
+            <legend>registrazione</legend>
+            <label for="regName">nome</label>
+            <input type="text" id="regName" name="regName">
+            <label for="regSurname">cognome</label>
+            <input type="text" id="regSurname" name="regSurname" class="required" required />
+            <br>
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" name="regEmail" class="required" required />
+            <label for="regPassword">Password</label>
+            <input type="password" name="regPassword" id="regPassword" class="required" required minlength="8"
+                maxlength="20"
+                title="Inserire pass tra 20 e 8 caratteri con lettera maiuscola, minuscola numero e caratt. speciale" />
+                <br>
+            <label for="regAge">eta'</label>
+            <input type="number" id="regAge" name="regAge" min="18" title="Devi essere maggiorenne per registrarti" />
+            <label for="regPhone">Telefono</label>
+            <input type="tel" id="regPhone" name="regPhone" />
+            <br>
+            <button type="submit" id="btnSubmit">Invia</button>
+            <button type="reset" id="btnReset">Cancella</button>
+        </fieldset>
+    </form>
+
+    <div>
+        <h4>N.B. I campi evidenziati sono obbligatori</h4>
+        <h3 id="error"></h3>
+    </div>
+
+    <div id="thanks">
+        <h3>Grazie per esserti registrato, di seguito i dati inseriti</h3>
+        <h4 id="formName">nome: &nbsp;</h4>
+        <h4 id="formSurname">cognome: &nbsp;</h4>
+        <h4 id="formEmail">email: &nbsp;</h4>
+        <h4 id="formPassword">password: &nbsp;</h4>
+        <h4 id="formAge">eta: &nbsp;</h4>
+        <h4 id="formPhone">Telefono: &nbsp;</h4>
+    </div>
+
+    <script src="assets/js/d1.js"></script>
+</body>
+
+</html>
